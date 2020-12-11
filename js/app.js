@@ -26,8 +26,14 @@ var dodatni_ulog = false;
 var resetuj_slotove = false;
 var broj = 0;
 
-const animacija = 'treptanje 0.1s infinite';
-	
+const besplatni_ulog = new Audio('./data/sounds/besplatni_ulog.mp3');	
+const bez_dobitaka_zvuk = new Audio('./data/sounds/bez_dobitka.mp3');	
+const dobitak_zvuk = new Audio('./data/sounds/dobitak.mp3');	
+const ode_voz = new Audio('./data/sounds/ode_voz.mp3');	
+const placeni_ulog = new Audio('./data/sounds/placeni_ulog.mp3');	
+const punjenje_slota = new Audio('./data/sounds/punjenje_slota.mp3');	
+const ulog_zvuk = new Audio('./data/sounds/ulog.mp3');	
+const veca_manja = new Audio('./data/sounds/veca_manja.mp3');	
 
 var interval = null;
 var intervalFlag = false;
@@ -161,6 +167,7 @@ function ulozi(){
 			ispuni_primarni_slot();
 			animacija_treptanja();
 			azuriraj_panel_stanja();
+			ulog_zvuk.play();
 			bonus_ulog = true;
 			this.innerHTML = 'Replace slot for free';
 			
@@ -168,6 +175,7 @@ function ulozi(){
 	}else if(bonus_ulog){		
 			ispuni_primarni_slot();
 			animacija_treptanja();
+			besplatni_ulog.play();
 			bonus_ulog = false;
 			dodatni_ulog = true;
 			this.innerHTML = 'Replace costs 1x Stake';
@@ -176,6 +184,7 @@ function ulozi(){
 			kredit -= ulog;
 			ispuni_primarni_slot();
 			animacija_treptanja();
+			placeni_ulog.play();
 			azuriraj_panel_stanja();
 			bonus_ulog = false;
 			
@@ -260,6 +269,7 @@ function popuni_slot(e){
 		
 		ispuni_primarni_slot();
 		animacija_treptanja();
+		punjenje_slota.play();
 		
 		if(this.br_kolona == 3){
 			izracunaj_poene(this);
@@ -377,10 +387,12 @@ function testiraj_pobedu(){
 		if(dobitak>= 100){
 			////otvaranje modala za kockanje
 			otvori_vece_manje_modal();
+			dobitak_zvuk.play();
 			
 		}else{
 			//animacija rezultata
-			bez_dobitka();			
+			bez_dobitka();		
+			bez_dobitaka_zvuk.play();		
 		}
 		return true;
 	}
@@ -472,10 +484,13 @@ function manja(){
 		if(dobitak_u_kreditima == lista_dobitaka.firstElementChild.innerHTML)
 			dobitak();
 		
+		veca_manja.play();
+		
 	}else{
 		//prokockao_pobedu();
 		dobitak_u_kreditima_div.value = 0;
 		isplati_dobitak();
+		ode_voz.play();
 	}
 	
 }
@@ -495,10 +510,12 @@ function veca(){
 		if(dobitak_u_kreditima == lista_dobitaka.firstElementChild.innerHTML)
 			dobitak();
 		
+		veca_manja.play();
 	}else{
 		//prokockao_pobedu();
 		dobitak_u_kreditima_div.value = 0;
 		isplati_dobitak();
+		ode_voz.play();
 	}
 	
 }
