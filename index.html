@@ -1,0 +1,231 @@
+<html>
+<head>
+	<title>Vockice</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+	<link rel="stylesheet" href="css/style.css">
+	
+	<meta charset="UTF-8">
+	<meta name = 'author' content = 'Zeljko Ivanovic'>
+	<meta name =  'keywords' content = 'js, game, slot, slot-mashine, vockice, html5>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+	<div id = 'container' class="container">
+        <div class="row">
+			<div id = 'dobitni_modovi' class = 'col'>
+			<div class = 'row justify-content-center'>
+			<button id = 'zvuk' type="button" class="btn btn-default btn-sm">
+				<span class = 'p-0'>🔊<!-- 🔇 --></span>
+			</button>
+			<button id = 'informacije' type="button" class="btn btn-default btn-sm">
+				<span class = 'p-0'>ℹ️</span>
+			</button>
+			<button id = 'instrukcije' type="button" class="btn btn-default btn-sm">
+				<span class = 'p-0'>📖</span>
+			</button>
+			</div>
+				<p id = 'dobitni_mod1' class = 'text-danger text-bold text-center text-uppercase'>
+					
+					9 ALIKE<br>
+					 BONUS<br>
+					  200
+					
+				</p>
+				<p id = 'dobitni_mod2' class = 'text-danger text-bold text-center text-uppercase'>
+					
+						3<br>
+					 WINNING<br>
+					  SLOTS<br>
+					 TOTAL X2
+					
+				</p>
+				<p id = 'dobitni_mod3' class = 'text-danger text-bold text-center text-uppercase'>
+					
+						2<br>
+					 WINNING<br>
+					  SLOTS<br>
+					 TOTAL X1<sup>1</sup>/<sub>2</sub>
+					
+				</p>
+			</div>
+			<div id = 'bodovna_tabela' class = 'col'>
+				<p class = 'text-warning font-weight-bold text-center mb-1'>Points per Winline</p>
+				<img class= 'img-fluid' src = './data/bodovna_tabela.png'>
+				
+			</div>
+			<div id = 'primarni_slot' class = 'col'>
+				<div id = 'primarni_0'><img src = './data/vocke/empty.png'></div>
+				<div id = 'primarni_1'><img src = './data/vocke/empty.png'></div>
+				<div id = 'primarni_2'><img src = './data/vocke/empty.png'></div>
+				<button id = 'ulozi' class = 'btn btn-success' >Stake</button>
+			</div>
+			<div id = 'skala_dobitaka' class = 'col'>
+				<p class = 'text-warning font-weight-bold text-center mb-1'>Points  Prizes</p>
+				<table class = 'text-weight-bold text-align-center'>
+					<tr class = 'text-warning'>
+						<th></th>
+						<th></th>
+					</tr>
+					<tr>
+						<td>1000</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>750</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>500</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>400</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>300</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>250</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>200</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>150</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>100</td>
+						<td></td>
+					</tr>
+				</table>
+			</div>
+			
+			<div id = 'panel_stanja' class = 'col'>
+				<form name = 'stanje' class = 'form-vertical'>
+				<label class = 'text-danger shadow-sm text-weight-bold mb-0' >BALANCE</label>
+				<input name = 'kredit' type = 'number' readonly class = 'bg-danger shadow-bg form-control'>
+				<label class = 'text-danger shadow-sm text-weight-bold mb-0'>BET</label>
+				<div class="input-group mb-3">
+				  <div class="input-group-prepend">
+					<button id = 'smanji_ulog' disabled class="btn btn-success" type="button">-</button>
+				  </div>
+				  <input name = 'ulog' type = 'number' readonly class="bg-danger shadow-bg form-control">
+				  <div class="input-group-append">
+					<button id = 'povecaj_ulog' class="btn btn-success" type="button">+</button>
+				  </div>
+				</div>
+				<div id = 'dobitak_div' class = 'd-none'>
+				<label class = 'text-primary shadow-sm text-weight-bold mb-0'>TOTAL</label>
+				<input name = 'dobitak' type = 'number' readonly class = 'bg-primary shadow-bg form-control'>
+				</div>
+				</form>
+				
+			</div>	
+        </div>
+		<div id = 'dobici' class="row text-center m-5">
+		<div id = 'slot0_dobitak' class = 'col-4'>
+		<div class = 'badge badge-pill badge-primary' >0</div>
+		</div>
+		<div id = 'slot1_dobitak' class = 'col-4'>
+		<div class = 'badge  badge-pill badge-primary' >0</div>
+		</div>
+		<div id = 'slot2_dobitak' class = 'col-4'>
+		<div class = 'border-bg badge w-10 badge-pill badge-primary' >0</div>
+		</div>
+		</div>
+		<div id = 'slots_div' class="row">
+			<div id = 'slot0' class = 'col-4'>
+				<div class = 'col-4'></div>
+				<div class = 'col-4'></div>
+				<div class = 'col-4'></div>
+			</div>
+			<div id = 'slot1' class = 'col-4'>
+				<div class = 'col-4'></div>
+				<div class = 'col-4'></div>
+				<div class = 'col-4'></div>	
+				<img class = 'img-fluid' id = 'game_over' src = './data/game_over.png'>
+			</div>
+			<div id = 'slot2' class = 'col-4'>
+				<div class = 'col-4'></div>
+				<div class = 'col-4'></div>
+				<div class = 'col-4'></div>	
+			</div>
+        </div>
+	</div>
+	
+	<button hidden id = 'vece_manje_modal' type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+	</button>
+	
+	<div id="myModal" class="modal" role="dialog">
+    <div class="modal-dialog modal-full">
+			<!-- Modal content-->
+			<div class="modal-content">
+			 <button id = 'zatvori_modal' hidden type="button" class="close" data-dismiss="modal"></button>
+				<div id = 'vece_manje_div' class = 'row'>
+					<div class = 'col col-2'>
+						<ul id = 'skala_za_dobitke' class = 'list-unstyled'>
+							<li>200</li>
+							<li>100</li>
+							<li>60</li>
+							<li>40</li>
+							<li>30</li>
+							<li>20</li>
+							<li>15</li>
+							<li>10</li>
+							<li>6</li>
+							<li>4</li>
+							<li>3</li>
+							<li>2</li>
+							<li>0</li>
+						</ul>
+					</div>
+					<div class = 'col col-8'>
+						<div class = 'container'>
+							<div class = 'row col-12 justify-content-center'>
+							<img src = './data/win.png'>
+							</div>
+							<div class = 'row col-12 justify-content-center'><input id = 'dobitak_u_kreditima' readonly type = 'number'></div>
+							<div id = 'vece_manje_slot' class = 'row col-12 justify-content-center align-items-center'>
+							<div id = 'manja' class='col4 mr-2'><img class = 'img-fluid' width = '150' height = '350' src = './data/vocke/empty.png'></div>
+							<div id = 'broj' class='col4' >13</div>
+							<div id = 'veca' class='col4 ml-2'><img class = 'img-fluid' width = '150' height = '350' src = './data/vocke/empty.png'></div>
+							</div>
+						</div>
+					</div>
+					<div class = 'col col-2'>
+						<ul id = 'skala_brojeva' class = 'list-unstyled'>
+						<li>13</li>
+						<li>12</li>
+						<li>11</li>
+						<li>10</li>
+						<li>9</li>
+						<li>8</li>
+						<li>7</li>
+						<li>6</li>
+						<li>5</li>
+						<li>4</li>
+						<li>3</li>
+						<li>2</li>
+						<li>1</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+    <!-- Latest compiled and minified JavaScript -->
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
