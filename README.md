@@ -1,2 +1,2 @@
-# Vockice
+# 🎰Vockice
 Video slot vockice
