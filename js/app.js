@@ -642,7 +642,7 @@ function playSound(snd){
 		
 	}
 	snd.currentTime = 0;
-	snd.play();
+	setTimeout(function(){snd.play();},0);
 	
 	trenutni_zvuk = snd;
 }
