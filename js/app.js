@@ -1,5 +1,6 @@
 const uplatna_skala = [200,100,40,20,10,6,4,3,2];
 const skala_dobitaka_niz = [1000,750,500,400,300,250,200,150,100];
+const skala_dobitaka_vece_manje = [0,2,3,4,6,10,15,20,30,40,60,100,200];
 const bodovna_tabela = [300,120,60,60,60,40,40,20,20,20]; 
 
 var primarni_slot = new Array(3);
@@ -397,6 +398,24 @@ function testiraj_pobedu(){
 			////otvaranje modala za kockanje
 			playSound(dobitak_zvuk);
 			
+			var us = uplatna_skala.slice();
+			us.forEach((e,i,arr) => {arr[i] = e * ulog})
+			
+			var closest = skala_dobitaka_niz.reduce(function(prev, curr) {
+				return (Math.abs(curr - dobitak) < Math.abs(prev - dobitak) ? curr : prev);
+			});
+			
+			var dob = us[skala_dobitaka_niz.indexOf(closest)];
+			
+			dobitak_u_kreditima = dob;
+			
+			
+			skala_dobitaka_vece_manje.slice().reverse().forEach((e,i)=>{
+				skala_za_dobitke.children[i].innerHTML = e*ulog;
+			});
+			
+			
+			
 		}else{
 			//animacija rezultata
 			bez_dobitka();		
@@ -464,18 +483,8 @@ function resetuj(){
 
 function otvori_vece_manje_modal(){
 	vece_manje_modal.click();
-	var us = uplatna_skala.reverse();
-	us.forEach((e,i,arr) => {arr[i] = e * ulog})
-	var index = skala_dobitaka_niz.reverse().findIndex((e,i,arr)=>{
-		
-		return (dobitak >=e  && dobitak < arr[i+1]);
-		
-	});
-	dobitak_u_kreditima = us[index];
-	dobitak_u_kreditima_div.value = dobitak_u_kreditima;
 	
-	for(var i in lista_dobitaka.children)
-		lista_dobitaka.children[i].innerHTML = Number(lista_dobitaka.children[i].innerHTML)*ulog;
+	dobitak_u_kreditima_div.value = dobitak_u_kreditima;
 		
 	broj = daj_nasmumirni_broj(1,13);
 	broj_div.innerHTML = broj;
