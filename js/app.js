@@ -116,6 +116,35 @@ function pocni_igru(){
 	manja_div.onclick = manja;
 	
 	zvuk.onclick = iskljuci_zvuk;
+	
+	document.onkeydown = function(e){
+		var key = e.key.toLowerCase();
+		
+		if(key == 'a')smanji_ulog_dugme.click();
+		if(key == 's')povecaj_ulog_dugme.click();
+		
+		if(key == ' ' || key == 'l'){
+			
+			if(dobitak_u_kreditima == 0){
+				if((ulozi_dugme.innerHTML == 'Stake' || ulozi_dugme.innerHTML == 'Replace slot for free') && !ulozi_dugme.classList.contains('invisible'))
+					ulozi_dugme.click();
+			
+			}
+			else dobitak_u_kreditima_div.click();	
+		}
+		
+		if(key == 'b')if(ulozi_dugme.innerHTML == 'Replace costs 1x Stake' && !ulozi_dugme.classList.contains('invisible'))ulozi_dugme.click();
+		
+		if(key == 'x')slot0_div.click();
+		if(key == 'c')slot1_div.click();
+		if(key == 'v')slot2_div.click();
+		
+		if(key == 'm')veca_div.click();
+		if(key == 'n')manja_div.click();
+		
+		
+	
+	}
 }
 function azuriraj_skalu_dobitka(){
 	
