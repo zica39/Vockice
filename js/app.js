@@ -422,9 +422,10 @@ function testiraj_pobedu(){
 				skala_za_dobitke.children[i].innerHTML = e*ulog;
 			});
 			
-			if(dobitak_u_kreditima >= skala_dobitaka_vece_manje[skala_dobitaka_vece_manje.length-1])
+			if(dobitak_u_kreditima >= skala_dobitaka_vece_manje[skala_dobitaka_vece_manje.length-1]){
+					dobitak_u_kreditima_div.value = dobitak_u_kreditima;
 					ugasen_slot();
-			
+			}
 			
 			
 		}else{
@@ -516,9 +517,10 @@ function manja(){
 		dobitak_u_kreditima_div.value = Number(veci_el.innerHTML);
 		dobitak_u_kreditima =  Number(veci_el.innerHTML);
 		
-		if(dobitak_u_kreditima == lista_dobitaka.firstElementChild.innerHTML)
+		if(dobitak_u_kreditima == lista_dobitaka.firstElementChild.innerHTML){
 			ugasen_slot();
-		
+			return;
+		}
 		playSound(veca_manja);
 		
 	}else{
@@ -542,9 +544,10 @@ function veca(){
 		dobitak_u_kreditima_div.value = Number(veci_el.innerHTML);
 		dobitak_u_kreditima =  Number(veci_el.innerHTML);
 		
-		if(dobitak_u_kreditima == lista_dobitaka.firstElementChild.innerHTML)
+		if(dobitak_u_kreditima == lista_dobitaka.firstElementChild.innerHTML){
 			ugasen_slot();
-		
+			return;
+		}
 		playSound(veca_manja);
 	}else{
 		//prokockao_pobedu();
@@ -556,8 +559,9 @@ function veca(){
 }
 function ugasen_slot(){
 	//zvuk
-	playSound(slot_ugasen);
 	dobitak_u_kreditima_div.click();
+	playSound(slot_ugasen);
+	
 	
 }
 
@@ -630,8 +634,12 @@ function zaustavi_animaciju(){
 function playSound(snd){
 	
 	if(trenutni_zvuk){
-		trenutni_zvuk.pause();
 		trenutni_zvuk.currentTime = 0;
+		trenutni_zvuk.pause();
+		
+		if(trenutni_zvuk == devet_istih )
+				dobitni_mod1.classList.remove('animacija');
+		
 	}
 	snd.currentTime = 0;
 	snd.play();
