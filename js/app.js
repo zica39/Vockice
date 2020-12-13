@@ -391,17 +391,22 @@ function testiraj_pobedu(){
 	
 	if(slot0_div.br_kolona == 3 && slot1_div.br_kolona == 3 && slot2_div.br_kolona == 3){
 		
+		ulozi_dugme.classList.add('invisible');
+		
 		if(slot0_div.poeni)dobitni_mod++;
 		if(slot1_div.poeni)dobitni_mod++;
 		if(slot2_div.poeni)dobitni_mod++;
 	
 		dobitak = slot0_div.poeni + slot1_div.poeni + slot2_div.poeni;
+		var cisti_dobitak = dobitak;
+		
 		if(dobitni_mod == 2) dobitak =dobitak + dobitak*0.5;
 		if(dobitni_mod == 3) dobitak = dobitak*2;
 		
 		//animacija_rezultata
 		dobitak_div.classList.remove('d-none');
-		document.forms['stanje']['dobitak'].value = dobitak;
+		document.forms['stanje']['dobitak'].value = cisti_dobitak;
+	
 		//console.log(dobitak);
 	
 		if(dobitak>= 100){
@@ -428,7 +433,10 @@ function testiraj_pobedu(){
 			}
 			
 			
-		}else{
+		}else if(dobitak<100 && dobitni_mod>1){
+			playSound(dobitak_zvuk);
+		}
+		else{
 			//animacija rezultata
 			bez_dobitka();		
 			playSound(bez_dobitaka_zvuk);		
@@ -506,6 +514,7 @@ function otvori_vece_manje_modal(){
 }
 
 function manja(){
+	if(broj == 1)return;
 	var stari_broj = broj;
 	broj = daj_nasmumirni_broj(1,13);
 	
@@ -534,6 +543,7 @@ function manja(){
 }
 
 function veca(){
+	if(broj == 13)return;
 	var stari_broj = broj;
 	broj = daj_nasmumirni_broj(1,13);
 	
@@ -672,7 +682,13 @@ dobitak_zvuk.onended = function(e){
 	if(dobitni_mod == 3)
 	dobitni_mod3.classList.remove('animacija');
 	
-	otvori_vece_manje_modal();
+	document.forms['stanje']['dobitak'].value = dobitak;
+	
+	if(dobitak>100)
+	setTimeout(otvori_vece_manje_modal,1000);
+	else
+	bez_dobitka();
+	//otvori_vece_manje_modal();
 }
 
 ode_voz.onended = function(e){
