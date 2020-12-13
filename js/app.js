@@ -42,6 +42,9 @@ const ulog_zvuk = new Audio('./data/sounds/ulog.mp3');
 const veca_manja = new Audio('./data/sounds/veca_manja.mp3');	
 const slot_ugasen = new Audio('./data/sounds/slot_ugasen.mp3');	
 const devet_istih = new Audio('./data/sounds/devet_istih.mp3');	
+const promjena_uloga = new Audio('./data/sounds/promjena_uloga.mp3');	
+const podignut_novac = new Audio('./data/sounds/podignut_novac.mp3');	
+
 var trenutni_zvuk = null;
 
 var interval = null;
@@ -130,6 +133,7 @@ function smanji_ulog(){
 	
 	if(ulog > MINIMALNI_ULOG){
 		ulog--;
+		playSound(promjena_uloga);
 		
 			if(ulog == MINIMALNI_ULOG){
 				smanji_ulog_dugme.setAttribute('disabled','');
@@ -149,6 +153,7 @@ function povecaj_ulog(){
 	
 	if(ulog < MAKSIMALAN_ULOG){
 		ulog++;
+		playSound(promjena_uloga);
 		
 		if(ulog == MAKSIMALAN_ULOG){
 				povecaj_ulog_dugme.setAttribute('disabled','');
@@ -405,14 +410,15 @@ function testiraj_pobedu(){
 				return (Math.abs(curr - dobitak) < Math.abs(prev - dobitak) ? curr : prev);
 			});
 			
-			var dob = us[skala_dobitaka_niz.indexOf(closest)];
-			
-			dobitak_u_kreditima = dob;
+			dobitak_u_kreditima = us[skala_dobitaka_niz.indexOf(closest)];
 			
 			
 			skala_dobitaka_vece_manje.slice().reverse().forEach((e,i)=>{
 				skala_za_dobitke.children[i].innerHTML = e*ulog;
 			});
+			
+			if(dobitak_u_kreditima >= skala_dobitaka_vece_manje[skala_dobitaka_vece_manje.length-1])
+					ugasen_slot();
 			
 			
 			
@@ -506,7 +512,7 @@ function manja(){
 		dobitak_u_kreditima =  Number(veci_el.innerHTML);
 		
 		if(dobitak_u_kreditima == lista_dobitaka.firstElementChild.innerHTML)
-			dobitak();
+			ugasen_slot();
 		
 		playSound(veca_manja);
 		
@@ -532,7 +538,7 @@ function veca(){
 		dobitak_u_kreditima =  Number(veci_el.innerHTML);
 		
 		if(dobitak_u_kreditima == lista_dobitaka.firstElementChild.innerHTML)
-			dobitak();
+			ugasen_slot();
 		
 		playSound(veca_manja);
 	}else{
@@ -543,7 +549,7 @@ function veca(){
 	}
 	
 }
-function dobitak(){
+function ugasen_slot(){
 	//zvuk
 	playSound(slot_ugasen);
 	dobitak_u_kreditima_div.click();
@@ -574,6 +580,8 @@ function obiljezi_broj(broj){
 function isplati_dobitak(){
 	dobitak_u_kreditima = Number(dobitak_u_kreditima_div.value);
 	kredit += dobitak_u_kreditima;
+	if(dobitak_u_kreditima>0)
+		playSound(podignut_novac);
 	azuriraj_panel_stanja();
 	zaustavi_animaciju()
 	
