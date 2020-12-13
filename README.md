@@ -1,4 +1,7 @@
 # 🎰Video slot Vockice 
-Kopija poznatog slota 'Vockice' napisan na cistom JS i Bootstrap-u
-> Vockice mi zivot upropastise 😂
+Kopija poznatog slota 'Vockice' napisan na cistom JS-u
 
+<!--- 
+Kao sto duluvra rece:
+> Vockice mi zivot upropastile 😂
+-->
