@@ -526,7 +526,8 @@ function manja(){
 	}else{
 		//prokockao_pobedu();
 		dobitak_u_kreditima_div.value = 0;
-		isplati_dobitak();
+		zaustavi_animaciju();
+		lista_dobitaka.lastElementChild.classList.add('text-danger');
 		playSound(ode_voz);
 	}
 	
@@ -552,7 +553,8 @@ function veca(){
 	}else{
 		//prokockao_pobedu();
 		dobitak_u_kreditima_div.value = 0;
-		isplati_dobitak();
+		zaustavi_animaciju();
+		lista_dobitaka.lastElementChild.classList.add('text-danger');
 		playSound(ode_voz);
 	}
 	
@@ -672,6 +674,11 @@ dobitak_zvuk.onended = function(e){
 	
 	otvori_vece_manje_modal();
 }
+
+ode_voz.onended = function(e){
+	
+	isplati_dobitak();
+};
 
 function iskljuci_zvuk(e){
 	if(!this.iskljuci){
