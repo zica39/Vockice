@@ -434,6 +434,7 @@ function testiraj_pobedu(){
 			
 			
 		}else if(dobitak<100 && dobitni_mod>1){
+			bez_dobitka();
 			playSound(dobitak_zvuk);
 		}
 		else{
@@ -651,7 +652,8 @@ function playSound(snd){
 		
 		if(trenutni_zvuk == devet_istih )
 				dobitni_mod1.classList.remove('animacija');
-		
+		if(trenutni_zvuk == dobitak_zvuk && dobitak<100 )
+				dobitni_mod2.classList.remove('animacija');
 	}
 	snd.currentTime = 0;
 	setTimeout(function(){snd.play();},0);
@@ -686,8 +688,9 @@ dobitak_zvuk.onended = function(e){
 	
 	if(dobitak>100)
 	setTimeout(otvori_vece_manje_modal,1000);
-	else
-	bez_dobitka();
+	
+	//else
+	//bez_dobitka();
 	//otvori_vece_manje_modal();
 }
 
