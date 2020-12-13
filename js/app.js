@@ -16,6 +16,10 @@ const slot0_dobitak = document.getElementById('slot0_dobitak');
 const slot1_dobitak = document.getElementById('slot1_dobitak');
 const slot2_dobitak = document.getElementById('slot2_dobitak');
 
+const dobitni_mod1 = document.getElementById('dobitni_mod1');
+const dobitni_mod2 = document.getElementById('dobitni_mod3');
+const dobitni_mod3 = document.getElementById('dobitni_mod2');
+
 var dobitak = 0;
 var dobitak_u_kreditima = 0;
 var kredit = 100;
@@ -25,6 +29,7 @@ var bonus_ulog = false;
 var dodatni_ulog = false;
 var resetuj_slotove = false;
 var broj = 0;
+var dobitni_mod = 0;
 
 const besplatni_ulog = new Audio('./data/sounds/besplatni_ulog.mp3');	
 const bez_dobitaka_zvuk = new Audio('./data/sounds/bez_dobitka.mp3');	
@@ -34,6 +39,9 @@ const placeni_ulog = new Audio('./data/sounds/placeni_ulog.mp3');
 const punjenje_slota = new Audio('./data/sounds/punjenje_slota.mp3');	
 const ulog_zvuk = new Audio('./data/sounds/ulog.mp3');	
 const veca_manja = new Audio('./data/sounds/veca_manja.mp3');	
+const slot_ugasen = new Audio('./data/sounds/slot_ugasen.mp3');	
+const devet_istih = new Audio('./data/sounds/devet_istih.mp3');	
+var trenutni_zvuk = null;
 
 var interval = null;
 var intervalFlag = false;
@@ -167,7 +175,7 @@ function ulozi(){
 			ispuni_primarni_slot();
 			animacija_treptanja();
 			azuriraj_panel_stanja();
-			ulog_zvuk.play();
+			playSound(ulog_zvuk);
 			bonus_ulog = true;
 			this.innerHTML = 'Replace slot for free';
 			
@@ -175,7 +183,7 @@ function ulozi(){
 	}else if(bonus_ulog){		
 			ispuni_primarni_slot();
 			animacija_treptanja();
-			besplatni_ulog.play();
+			playSound(besplatni_ulog);
 			bonus_ulog = false;
 			dodatni_ulog = true;
 			this.innerHTML = 'Replace costs 1x Stake';
@@ -184,7 +192,7 @@ function ulozi(){
 			kredit -= ulog;
 			ispuni_primarni_slot();
 			animacija_treptanja();
-			placeni_ulog.play();
+			playSound(placeni_ulog);
 			azuriraj_panel_stanja();
 			bonus_ulog = false;
 			
@@ -269,7 +277,7 @@ function popuni_slot(e){
 		
 		ispuni_primarni_slot();
 		animacija_treptanja();
-		punjenje_slota.play();
+		playSound(punjenje_slota);
 		
 		if(this.br_kolona == 3){
 			izracunaj_poene(this);
@@ -355,18 +363,19 @@ function izracunaj_poene(el){
 	if( arr.every( (val, i, a) => val === a[0] )){
 	//animacija za svi isti
 	poeni += 300;
+	playSound(devet_istih);
 	}
 	
 	//console.log(poeni);
 	el.poeni = poeni;
 	
 	el.dobitak_div.firstElementChild.innerHTML = poeni;
+	el.dobitak_div.classList.remove('invisible');
 	
 }
 
 function testiraj_pobedu(){
 	
-	var dobitni_mod = 0;
 	//animacije
 	
 	if(slot0_div.br_kolona == 3 && slot1_div.br_kolona == 3 && slot2_div.br_kolona == 3){
@@ -386,13 +395,12 @@ function testiraj_pobedu(){
 	
 		if(dobitak>= 100){
 			////otvaranje modala za kockanje
-			otvori_vece_manje_modal();
-			dobitak_zvuk.play();
+			playSound(dobitak_zvuk);
 			
 		}else{
 			//animacija rezultata
 			bez_dobitka();		
-			bez_dobitaka_zvuk.play();		
+			playSound(bez_dobitaka_zvuk);		
 		}
 		return true;
 	}
@@ -432,6 +440,8 @@ function sa_dobitkom(){
 function resetuj(){
 	isprazni_slotove();
 	
+	dobitni_mod = 0;
+	
 	slot0_div.br_kolona = 0;
 	slot1_div.br_kolona = 0;
 	slot2_div.br_kolona = 0;
@@ -443,6 +453,10 @@ function resetuj(){
 	slot0_div.dobitak_div.firstElementChild.innerHTML = 0;
 	slot1_div.dobitak_div.firstElementChild.innerHTML = 0;
 	slot2_div.dobitak_div.firstElementChild.innerHTML = 0;
+	
+	slot0_div.dobitak_div.classList.add('invisible');
+	slot1_div.dobitak_div.classList.add('invisible');
+	slot2_div.dobitak_div.classList.add('invisible');
 	
 	game_over.style.display = 'none';
 	dobitak_div.classList.add('d-none');
@@ -481,16 +495,17 @@ function manja(){
 		
 		dobitak_u_kreditima_div.value = Number(veci_el.innerHTML);
 		dobitak_u_kreditima =  Number(veci_el.innerHTML);
+		
 		if(dobitak_u_kreditima == lista_dobitaka.firstElementChild.innerHTML)
 			dobitak();
 		
-		veca_manja.play();
+		playSound(veca_manja);
 		
 	}else{
 		//prokockao_pobedu();
 		dobitak_u_kreditima_div.value = 0;
 		isplati_dobitak();
-		ode_voz.play();
+		playSound(ode_voz);
 	}
 	
 }
@@ -510,17 +525,18 @@ function veca(){
 		if(dobitak_u_kreditima == lista_dobitaka.firstElementChild.innerHTML)
 			dobitak();
 		
-		veca_manja.play();
+		playSound(veca_manja);
 	}else{
 		//prokockao_pobedu();
 		dobitak_u_kreditima_div.value = 0;
 		isplati_dobitak();
-		ode_voz.play();
+		playSound(ode_voz);
 	}
 	
 }
 function dobitak(){
 	//zvuk
+	playSound(slot_ugasen);
 	dobitak_u_kreditima_div.click();
 	
 }
@@ -587,4 +603,42 @@ function zaustavi_animaciju(){
 	
 	clearInterval(interval);
 	lista_dobitaka.querySelectorAll('.text-danger').forEach((e)=> e.classList.remove('text-danger'));
+}
+
+function playSound(snd){
+	
+	if(trenutni_zvuk){
+		trenutni_zvuk.pause();
+		trenutni_zvuk.currentTime = 0;
+	}
+	snd.currentTime = 0;
+	snd.play();
+	
+	trenutni_zvuk = snd;
+}
+
+devet_istih.onplay = function(e){
+	dobitni_mod1.classList.add('animacija');
+}
+
+devet_istih.onended = function(e){
+	dobitni_mod1.classList.remove('animacija');
+}
+
+dobitak_zvuk.onplay = function(e){
+	if(dobitni_mod == 2)
+	dobitni_mod2.classList.add('animacija');
+	
+	if(dobitni_mod == 3)
+	dobitni_mod3.classList.add('animacija');
+}
+
+dobitak_zvuk.onended = function(e){
+	if(dobitni_mod == 2)
+	dobitni_mod2.classList.remove('animacija');
+	
+	if(dobitni_mod == 3)
+	dobitni_mod3.classList.remove('animacija');
+	
+	otvori_vece_manje_modal();
 }
