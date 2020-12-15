@@ -130,6 +130,9 @@ function pocni_igru(){
 		veca_div.style.pointerEvents = 'none';
 		manja_div.style.pointerEvents = 'none';
 		
+		veca_div.style.display = 'none';
+		manja_div.style.display = 'none';
+		
 		povecaj_ulog_dugme.style.display = 'none';
 		smanji_ulog_dugme.style.display = 'none';
 		
@@ -306,7 +309,7 @@ function pripremi_slotove(){
 	//img.style.border = '1px solid black';
 	img.setAttribute('src',prazna_vocka);
 	img.setAttribute('draggable','false');
-	img.classList.add('img-fluid');
+	img.classList.add('img-fluid-my');
 	
 	
 	for(var a in slots){

@@ -1,6 +1,39 @@
-body{
-	font-family: "Lucida Console", monospace!important;
+/* latin */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/heebo/v9/NGSpv5_NC0k9P_v6ZUCbLRAHxK1EiSysdUmm.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+
+body{
+	background: url(../data/bg2.png) no-repeat;
+	background-size:cover;
+	
+	font-family: 'Heebo', sans-serif;
+	
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+#container{
+	
+}
+
+.night-shadow{
+	background: #2a1550a3;
+    box-shadow: 1px 1px 5px #dfe2fe;
+}
+
+.dobitni_modovi_stil{
+	
+    border-radius: 10px;
+}
+
 #dobitni_modovi{	
 	font-size: 0.9em;
     line-height: 1;
@@ -57,6 +90,8 @@ body{
 }
 
 #skala_za_dobitke{
+	
+	background:#f8f9fad1;
 	padding: 23%;
     margin: 20% 10%;
     font-size: 1.5em;
@@ -67,6 +102,7 @@ body{
 }
 #skala_brojeva{
 	
+	background:#f8f9fad1;
 	padding: 23%;
     margin: 20% 10%;
     font-size: 1.5em;
@@ -84,6 +120,7 @@ body{
     border: black medium solid;
     outline: orange thick solid;
 	text-align:center;
+	background:#e3f4fc;
 }
 #broj{
 	font-size: 10em;
@@ -107,10 +144,10 @@ img {
 }
 
 tbody{
-background-color: #2a2a72;
-background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);	
-text-align:center;
-font-size: 0.85em;
+	/* background: #90d3f045;
+	box-shadow: 1px 1px 5px #495057; */
+	text-align:center;
+	font-size: 0.85em;
 }
 td:nth-child(even){
 	font-weight:bold;
@@ -141,16 +178,18 @@ input[name=kredit],input[name=ulog],input[name=dobitak]{
 .modal-full {
     min-width: 100%;
     margin: 0;
+	overflow:hidden!important;
 }
 
 .modal-full .modal-content {
     min-height: 100vh;
 }
-#container:first-child{
-	background-color:#9921e8;
-	background-image: linear-gradient(315deg, #9921e8 0%, #5f72be 74%);
-}
 
+#vece_manje_div{
+	background: url(../data/bg3.jfif) no-repeat;
+	background-size:cover;
+	background-position:0px 0px;
+}
 
 /* Firefox old*/
 @-moz-keyframes blink {
@@ -205,4 +244,45 @@ input[name=kredit],input[name=ulog],input[name=dobitak]{
     -webkit-animation: blink normal 1s infinite ease-in-out!important; /* Webkit */
     -ms-animation: blink normal 1s infinite ease-in-out!important; /* IE */
     animation: blink normal 1s infinite ease-in-out!important; /* Opera and prob css3 final iteration */
+}
+
+@media (min-width: 0px) {
+	 .img-fluid-my{
+		max-width:40px;
+		height:40px;
+		
+	}
+}
+
+@media (min-width: 576px) {
+	  .img-fluid-my{
+		max-width:50px;
+		height:50px;
+		
+	}
+}
+
+
+@media (min-width: 768px) { 
+	  .img-fluid-my{
+		max-width:60px;
+		height:60px;
+		
+	}
+}
+
+
+@media (min-width: 992px) {
+	  .img-fluid-my{
+		width:70px;
+		height:70px;
+	}
+}
+
+
+@media (min-width: 1200px) {
+	 .img-fluid-my{
+		max-width:80px;
+		height:80px;
+	}
 }
