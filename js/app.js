@@ -31,6 +31,7 @@ var dodatni_ulog = false;
 var resetuj_slotove = false;
 var broj = 0;
 var dobitni_mod = 0;
+var vece_manje = false;
 
 const besplatni_ulog = new Audio('./data/sounds/besplatni_ulog.mp3');	
 const bez_dobitaka_zvuk = new Audio('./data/sounds/bez_dobitka.mp3');	
@@ -117,6 +118,23 @@ function pocni_igru(){
 	
 	zvuk.onclick = iskljuci_zvuk;
 	
+	if(!is_touch_device()){
+		
+		ulozi_dugme.style.pointerEvents = 'none'
+		dobitak_u_kreditima_div.style.pointerEvents = 'none';
+		
+		slot0_div.style.pointerEvents = 'none';
+		slot1_div.style.pointerEvents = 'none';
+		slot2_div.style.pointerEvents = 'none';
+		
+		veca_div.style.pointerEvents = 'none';
+		manja_div.style.pointerEvents = 'none';
+		
+		povecaj_ulog_dugme.style.display = 'none';
+		smanji_ulog_dugme.style.display = 'none';
+		
+	}
+	
 	document.onkeydown = function(e){
 		var key = e.key.toLowerCase();
 		
@@ -125,7 +143,7 @@ function pocni_igru(){
 		
 		if(key == ' ' || key == 'l'){
 			
-			if(dobitak_u_kreditima == 0){
+			if(!vece_manje){
 				if((ulozi_dugme.innerHTML == 'Stake' || ulozi_dugme.innerHTML == 'Replace slot for free') && !ulozi_dugme.classList.contains('invisible'))
 					ulozi_dugme.click();
 			
@@ -360,6 +378,7 @@ function animacija_treptanja(){
 			var e1 = e.children[1].children;
 			
 			if(e0[0].e == ps[0] && e1[0].e == ps[0]){
+				
 				e0[0].classList.add('animacija');
 				e1[0].classList.add('animacija');
 			}
@@ -507,6 +526,7 @@ function sa_dobitkom(){
 }
 
 function resetuj(){
+	
 	isprazni_slotove();
 	
 	dobitni_mod = 0;
@@ -529,10 +549,13 @@ function resetuj(){
 	
 	game_over.style.display = 'none';
 	dobitak_div.classList.add('d-none');
+	
+	vece_manje = false;
 }
 
 function otvori_vece_manje_modal(){
 	vece_manje_modal.click();
+	vece_manje = true;
 	
 	dobitak_u_kreditima_div.value = dobitak_u_kreditima;
 		
@@ -739,4 +762,12 @@ function iskljuci_zvuk(e){
 			this.innerHTML = '🔊';
 	}
 	this.iskljuci = !this.iskljuci;
+}
+
+function is_touch_device() {
+    if(window.matchMedia("(pointer: coarse)").matches) {
+		return true;
+	}
+	
+	return false;
 }
