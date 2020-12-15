@@ -56,6 +56,7 @@ const MAKSIMALAN_ULOG = 10;
 const MINIMALNI_ULOG = 1;
 const prazna_vocka = './data/vocke/empty.png';
 
+const container = document.getElementById('container');
 const skala_dobitaka = document.getElementById('skala_dobitaka');
 const smanji_ulog_dugme = document.getElementById('smanji_ulog');
 const povecaj_ulog_dugme = document.getElementById('povecaj_ulog');
@@ -75,6 +76,7 @@ const manja_div = document.getElementById('manja');
 const vece_manje_slot = document.getElementById('vece_manje_slot');
 
 const zvuk = document.getElementById('zvuk');
+const fs_dugme = document.getElementById('fullscreen');
 
 pocni_igru();
 
@@ -117,6 +119,7 @@ function pocni_igru(){
 	manja_div.onclick = manja;
 	
 	zvuk.onclick = iskljuci_zvuk;
+	fs_dugme.onclick = toggleFullScreen;
 	
 	if(!is_touch_device()){
 		
@@ -135,6 +138,7 @@ function pocni_igru(){
 		
 		povecaj_ulog_dugme.style.display = 'none';
 		smanji_ulog_dugme.style.display = 'none';
+		
 		
 	}
 	
@@ -774,3 +778,44 @@ function is_touch_device() {
 	
 	return false;
 }
+
+function toggleFullScreen() {
+	 
+	if ((document.fullScreenElement && document.fullScreenElement !== null) ||
+			(!document.mozFullScreen && !document.webkitIsFullScreen)) {
+	
+		if (document.documentElement.requestFullScreen) {
+			document.documentElement.requestFullScreen();
+		} else if (document.documentElement.mozRequestFullScreen) {
+			document.documentElement.mozRequestFullScreen();
+		} else if (document.documentElement.webkitRequestFullScreen) {
+			document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+		}
+	} else {
+
+		  
+		if (document.cancelFullScreen) {
+			document.cancelFullScreen();
+		} else if (document.mozCancelFullScreen) {
+			document.mozCancelFullScreen();
+		} else if (document.webkitCancelFullScreen) {
+			document.webkitCancelFullScreen();
+		}
+	}
+}
+
+function hideAddressBar()
+{
+  if(!window.location.hash)
+  {
+      if(document.height < window.outerHeight)
+      {
+          document.body.style.height = (window.outerHeight + 50) + 'px';
+      }
+
+      setTimeout( function(){ window.scrollTo(0, 1); }, 50 );
+  }
+}
+
+window.addEventListener("load", function(){ if(!window.pageYOffset){ hideAddressBar(); } } );
+window.addEventListener("orientationchange", hideAddressBar );

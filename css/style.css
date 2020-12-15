@@ -248,16 +248,16 @@ input[name=kredit],input[name=ulog],input[name=dobitak]{
 
 @media (min-width: 0px) {
 	 .img-fluid-my{
-		max-width:40px;
-		height:40px;
+		max-width:8vw;
+		height:auto;
 		
 	}
 }
 
 @media (min-width: 576px) {
 	  .img-fluid-my{
-		max-width:50px;
-		height:50px;
+		max-width:8vw;
+		height:auto;
 		
 	}
 }
@@ -265,8 +265,8 @@ input[name=kredit],input[name=ulog],input[name=dobitak]{
 
 @media (min-width: 768px) { 
 	  .img-fluid-my{
-		max-width:60px;
-		height:60px;
+		max-width:8vw;
+		height:auto;
 		
 	}
 }
@@ -274,15 +274,15 @@ input[name=kredit],input[name=ulog],input[name=dobitak]{
 
 @media (min-width: 992px) {
 	  .img-fluid-my{
-		width:70px;
-		height:70px;
+		max-width:8vw;
+		height:auto;
 	}
 }
 
 
 @media (min-width: 1200px) {
 	 .img-fluid-my{
-		max-width:80px;
-		height:80px;
+		max-width:8vw;
+		height:auto;;
 	}
 }

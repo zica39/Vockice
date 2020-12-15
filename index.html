@@ -9,6 +9,7 @@
 	<meta charset="UTF-8">
 	<meta name =  'keywords' content = 'js, game, slot, slot-mashine, vockice, html5'>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="user-scalable=no" />
 </head>
 <body>
 
@@ -19,8 +20,8 @@
 			<button id = 'zvuk' type="button" title = 'Iskljuci zvuk' class="btn btn-default btn-sm">
 				<span class = 'p-0'>🔊</span>
 			</button>
-			<button id = 'informacije' type="button" title = 'informacije' class="btn btn-default btn-sm">
-				<span class = 'p-0'>ℹ️</span>
+			<button id = 'fullscreen' type="button" title = 'Ceo ekran' class="btn btn-default btn-sm">
+				<span class = 'p-0 text-alert'>💠</span>
 			</button>
 			<button id = 'instrukcije' type="button" title = 'Uputsvo' data-toggle="modal" data-target=".bd-example-modal-lg" class="btn btn-default btn-sm">
 				<span class = 'p-0'>📖</span>
@@ -52,7 +53,7 @@
 				</p>
 				</div>
 			</div>
-			<div id = 'bodovna_tabela' class = 'col'>
+			<div id = 'bodovna_tabela' class = 'col d-sm-none d-md-block'>
 				<p class = 'text-warning font-weight-bold text-center mb-1'>Points per Winline</p>
 				<img class= 'img-fluid' src = './data/bodovna_tabela.png'>
 				
@@ -63,7 +64,7 @@
 				<div id = 'primarni_2'><img src = './data/vocke/empty.png'></div>
 				<button id = 'ulozi' class = 'btn btn-success text-nowrap' >Stake</button>
 			</div>
-			<div id = 'skala_dobitaka' class = 'col'>
+			<div id = 'skala_dobitaka' class = 'col d-sm-none d-md-flex'>
 				<p class = 'text-warning font-weight-bold text-center mb-1'>Points  Prizes</p>
 				<table class = 'text-weight-bold text-align-center night-shadow'>
 					<tr class = 'text-warning'>
@@ -143,18 +144,18 @@
 		</div>
 		</div>
 		<div id = 'slots_div' class="row">
-			<div id = 'slot0' class = 'col-4'>
+			<div id = 'slot0' class = 'col-4 p-0'>
 				<div class = 'col-4'></div>
 				<div class = 'col-4'></div>
 				<div class = 'col-4'></div>
 			</div>
-			<div id = 'slot1' class = 'col-4'>
+			<div id = 'slot1' class = 'col-4 p-0'>
 				<div class = 'col-4'></div>
 				<div class = 'col-4'></div>
 				<div class = 'col-4'></div>	
 				<img class = 'img-fluid' id = 'game_over' src = './data/game_over.png'>
 			</div>
-			<div id = 'slot2' class = 'col-4'>
+			<div id = 'slot2' class = 'col-4 p-0'>
 				<div class = 'col-4'></div>
 				<div class = 'col-4'></div>
 				<div class = 'col-4'></div>	
