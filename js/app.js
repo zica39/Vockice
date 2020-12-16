@@ -78,7 +78,32 @@ const vece_manje_slot = document.getElementById('vece_manje_slot');
 const zvuk = document.getElementById('zvuk');
 const fs_dugme = document.getElementById('fullscreen');
 
+const logo_modal = document.getElementById('logo_modal');
+const progress_bar = document.getElementById('progress_bar');
+const ucitani_podaci = document.getElementById('ucitani_podaci');
+
+//ucitaj_resurse();
 pocni_igru();
+
+
+function ucitaj_resurse(){
+	logo_modal.click();
+	
+	var max_resursa = zvukovi.length;
+	var ucitani_resursi = 0;
+	
+	for(var i in zvukovi){
+		zvukovi[i].oncanplaythrough  = function(e){
+			this.oncanplaythrough = null;
+			ucitani_resursi++;
+			progress_bar.style.width = max_resursa/ucitani_resursi*100 + '%';
+			if(ucitani_resursi == max_resursa){
+				ucitani_podaci.click();
+				pocni_igru();
+			}
+		}
+	}	
+}
 
 function pocni_igru(){
 	
@@ -578,6 +603,9 @@ function manja(){
 	var stari_broj = broj;
 	broj = daj_nasmumirni_broj(1,13);
 	
+	while(broj == stari_broj)
+		broj = daj_nasmumirni_broj(1,13);
+		
 	obiljezi_broj(broj);
 	
 	if(broj<stari_broj){
@@ -607,6 +635,9 @@ function veca(){
 	var stari_broj = broj;
 	broj = daj_nasmumirni_broj(1,13);
 	
+	while(broj == stari_broj)
+		broj = daj_nasmumirni_broj(1,13);
+		
 	obiljezi_broj(broj);
 	
 	if(broj>stari_broj){
