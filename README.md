@@ -1,5 +1,9 @@
-# 🎰Video slot Vockice 
-Kopija poznatog slota 'Voćkice' napisan na cistom JS-u
+# 🎰Video slot 🍒Vockiće🍒 
+Kopija poznatog slota 'Voćkice' napisan na cistom JS-u<br>
+<img src="https://zica39.github.io/Vockice/data/prikaz.png" width="30%" >
+<img src="https://zica39.github.io/Vockice/data/prikaz1.png" width="30%" >
+<img src="https://zica39.github.io/Vockice/data/prikaz2.png" width="30%" >
+
 <p><strong>Komande na tastaturi :</strong></p>
                   <ul>
                      <li>X – slot&nbsp; 1</li>
@@ -7,7 +11,7 @@ Kopija poznatog slota 'Voćkice' napisan na cistom JS-u
                      <li>V – slot&nbsp; 3</li>
                      <li>S – Ulog +</li>
                      <li>A – Ulog -</li>
-                     <li>B – zamena Voćkice simbola za 1 ulog</li>
+                     <li>B – zamena Voćkice simbola za 1 x ulog</li>
                      <li>SPACE ili L za početak slot igre ili zamenu Voćkice simbola besplatno</li>
                      <li>N – manja</li>
                      <li>M – Veća</li>
