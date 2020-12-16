@@ -95,8 +95,9 @@ function ucitaj_resurse() {
         zvukovi[i].oncanplaythrough = function(e) {
             this.oncanplaythrough = null;
             ucitani_resursi++;
-            progress_bar.style.width = max_resursa / ucitani_resursi * 100 + '%';
-            if (ucitani_resursi == max_resursa) {
+            progress_bar.style.width = ucitani_resursi / max_resursa * 100 + '%';
+            progress_bar.innerHTML = Math.round(ucitani_resursi / max_resursa * 100) + '%';
+			if (ucitani_resursi == max_resursa) {
                 ucitani_podaci.click();
                 pocni_igru();
             }

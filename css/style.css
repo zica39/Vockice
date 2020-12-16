@@ -204,6 +204,9 @@ input[name=dobitak] {
 	background-position: 0px 0px;
 }
 
+.gradient-modal{
+	background:linear-gradient(45deg, black, transparent);
+}
 
 /* Firefox old*/
 
