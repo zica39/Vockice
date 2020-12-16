@@ -4,6 +4,8 @@ Kopija poznatog slota 'Voćkice' napisan na cistom JS-u<br>
 <img src="https://zica39.github.io/Vockice/data/prikaz1.png" width="30%" >
 <img src="https://zica39.github.io/Vockice/data/prikaz2.png" width="30%" >
 
+### [▶️Vockice](https://zica39.github.io/Vockice/)
+
 <p><strong>Komande na tastaturi :</strong></p>
                   <ul>
                      <li>X – slot&nbsp; 1</li>
