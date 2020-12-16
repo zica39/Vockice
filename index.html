@@ -1,295 +1,268 @@
 <html>
-<head>
-	<title>Vockice</title>
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="icon" href = "./data/logo.png" >
-	
-	<meta charset="UTF-8">
-	<meta name =  'keywords' content = 'js, game, slot, slot-mashine, vockice, html5'>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="viewport" content="user-scalable=no" />
-</head>
-<body>
-
-	<div id = 'container' class="container shadow my-5">
-        <div class="row">
-			<div id = 'dobitni_modovi' class = 'col'>
-			<div class = 'row justify-content-center'>
-			<button id = 'zvuk' type="button" title = 'Iskljuci zvuk' class="btn btn-default btn-sm">
-				<span class = 'p-0'>🔊</span>
-			</button>
-			<button id = 'instrukcije' type="button" title = 'Uputsvo' data-toggle="modal" data-target=".bd-example-modal-lg" class="btn btn-default btn-sm">
-				<span class = 'p-0'>📖</span>
-			</button>
-				<button id = 'fullscreen' type="button" title = 'Ceo ekran' class="btn btn-default btn-sm">
-				<span class = 'p-0 text-alert'>💠</span>
-			</button>
-			</div>
-				<div class = 'dobitni_modovi_stil py-2 night-shadow'>
-				<p id = 'dobitni_mod1' class = 'mt-2 text-danger text-bold text-center text-uppercase'>
-					
-					9 ALIKE<br>
-					 BONUS<br>
-					  200
-					
-				</p>
-				<p id = 'dobitni_mod2' class = 'text-danger text-bold text-center text-uppercase'>
-					
-						3<br>
-					 WINNING<br>
-					  SLOTS<br>
-					 TOTAL X2
-					
-				</p>
-				<p id = 'dobitni_mod3' class = 'text-danger text-bold text-center text-uppercase'>
-					
-						2<br>
-					 WINNING<br>
-					  SLOTS<br>
-					 TOTAL X1<sup>1</sup>/<sub>2</sub>
-					
-				</p>
-				</div>
-			</div>
-			<div id = 'bodovna_tabela' class = 'col d-sm-none d-md-block'>
-				<p class = 'text-warning font-weight-bold text-center mb-1'>Points per Winline</p>
-				<img class= 'img-fluid' src = './data/bodovna_tabela.png'>
-				
-			</div>
-			<div id = 'primarni_slot' class = 'col'>
-				<div id = 'primarni_0'><img src = './data/vocke/empty.png'></div>
-				<div id = 'primarni_1'><img src = './data/vocke/empty.png'></div>
-				<div id = 'primarni_2'><img src = './data/vocke/empty.png'></div>
-				<button id = 'ulozi' class = 'btn btn-success text-nowrap' >Stake</button>
-			</div>
-			<div id = 'skala_dobitaka' class = 'col d-sm-none d-md-flex'>
-				<p class = 'text-warning font-weight-bold text-center mb-1'>Points  Prizes</p>
-				<table class = 'text-weight-bold text-align-center night-shadow'>
-					<tr class = 'text-warning'>
-						<th></th>
-						<th></th>
-					</tr>
-					<tr>
-						<td>1000</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>750</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>500</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>400</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>300</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>250</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>200</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>150</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>100</td>
-						<td></td>
-					</tr>
-				</table>
-			</div>
-			
-			<div id = 'panel_stanja' class = 'col'>
-				<form name = 'stanje' class = 'form-vertical'>
-				<label class = 'text-danger shadow-sm text-weight-bold mb-0' >BALANCE</label>
-				<input name = 'kredit' type = 'number' readonly class = 'bg-danger shadow-bg form-control'>
-				<label class = 'text-danger shadow-sm text-weight-bold mb-0'>BET</label>
-				<div class="input-group mb-3">
-				  <div class="input-group-prepend">
-					<button id = 'smanji_ulog' disabled class="btn btn-success" type="button">-</button>
-				  </div>
-				  <input name = 'ulog' type = 'number' readonly class="bg-danger shadow-bg form-control">
-				  <div class="input-group-append">
-					<button id = 'povecaj_ulog' class="btn btn-success" type="button">+</button>
-				  </div>
-				</div>
-				<div id = 'dobitak_div' class = 'd-none'>
-				<label class = 'text-primary shadow-sm text-weight-bold mb-0'>TOTAL</label>
-				<input name = 'dobitak' type = 'number' readonly class = 'bg-primary shadow-bg form-control'>
-				</div>
-				</form>
-				
-			</div>	
-        </div>
-		<div id = 'dobici' class="row text-center m-5">
-		<div id = 'slot0_dobitak' class = 'col-4 invisible'>
-		<div class = 'badge badge-pill badge-primary' >0</div>
-		</div>
-		<div id = 'slot1_dobitak' class = 'col-4 invisible'>
-		<div class = 'badge  badge-pill badge-primary' >0</div>
-		</div>
-		<div id = 'slot2_dobitak' class = 'col-4 invisible'>
-		<div class = 'border-bg badge w-10 badge-pill badge-primary' >0</div>
-		</div>
-		</div>
-		<div id = 'slots_div' class="row">
-			<div id = 'slot0' class = 'col-4 p-0'>
-				<div class = 'col-4'></div>
-				<div class = 'col-4'></div>
-				<div class = 'col-4'></div>
-			</div>
-			<div id = 'slot1' class = 'col-4 p-0'>
-				<div class = 'col-4'></div>
-				<div class = 'col-4'></div>
-				<div class = 'col-4'></div>	
-				<img class = 'img-fluid' id = 'game_over' src = './data/game_over.png'>
-			</div>
-			<div id = 'slot2' class = 'col-4 p-0'>
-				<div class = 'col-4'></div>
-				<div class = 'col-4'></div>
-				<div class = 'col-4'></div>	
-			</div>
-        </div>
-	</div>
-	
-	<button hidden id = 'vece_manje_modal' type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-	</button>
-	
-	<div id="myModal" class="modal" role="dialog">
-    <div class="modal-dialog modal-full">
-			<!-- Modal content-->
-			<div class="modal-content">
-			 <button id = 'zatvori_modal' hidden type="button" class="close" data-dismiss="modal"></button>
-				<div id = 'vece_manje_div' class = 'row'>
-					<div class = 'col col-2'>
-						<ul id = 'skala_za_dobitke' class = 'list-unstyled'>
-							<li>200</li>
-							<li>100</li>
-							<li>60</li>
-							<li>40</li>
-							<li>30</li>
-							<li>20</li>
-							<li>15</li>
-							<li>10</li>
-							<li>6</li>
-							<li>4</li>
-							<li>3</li>
-							<li>2</li>
-							<li>0</li>
-						</ul>
-					</div>
-					<div class = 'col col-8'>
-						<div class = 'container'>
-							<div class = 'row col-12 justify-content-center'>
-							<img src = './data/win.png'>
-							</div>
-							<div class = 'row col-12 justify-content-center'><input id = 'dobitak_u_kreditima' readonly type = 'number'></div>
-							<div id = 'vece_manje_slot' class = 'row col-12 justify-content-center align-items-center'>
-							<div id = 'manja' class='col4 mr-2'><img class = 'img-fluid' width = '150' height = '350' src = './data/vocke/empty.png'></div>
-							<div id = 'broj' class='col4' >13</div>
-							<div id = 'veca' class='col4 ml-2'><img class = 'img-fluid' width = '150' height = '350' src = './data/vocke/empty.png'></div>
-							</div>
-						</div>
-					</div>
-					<div class = 'col col-2'>
-						<ul id = 'skala_brojeva' class = 'list-unstyled'>
-						<li>13</li>
-						<li>12</li>
-						<li>11</li>
-						<li>10</li>
-						<li>9</li>
-						<li>8</li>
-						<li>7</li>
-						<li>6</li>
-						<li>5</li>
-						<li>4</li>
-						<li>3</li>
-						<li>2</li>
-						<li>1</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</div>
-	
-
-
-	<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-	  <div class="modal-dialog modal-lg">
-		
-		<div class="modal-content">
-		
-		<div class="modal-header">
-        <h5 class="modal-title">Uputsvo za igranje</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span> </button>
+   <head>
+      <title>Vockice</title>
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+      <link rel="stylesheet" href="./css/style.css">
+      <link rel="icon" href = "./data/logo.png" >
+	  
+      <meta charset="UTF-8">
+      <meta name = 'keywords' content = 'js, game, slot, slot-mashine, vockice, html5'>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="viewport" content="user-scalable=no" />
+	  
+   </head>
+   <body>
+      <div id = 'container' class="container shadow my-5">
+         <div class="row">
+            <div id = 'dobitni_modovi' class = 'col'>
+               <div class = 'row justify-content-center'>
+                  <button id = 'zvuk' type="button" title = 'Iskljuci zvuk' class="btn btn-default btn-sm">
+                  <span class = 'p-0'>🔊</span>
+                  </button>
+                  <button id = 'instrukcije' type="button" title = 'Uputsvo' data-toggle="modal" data-target=".bd-example-modal-lg" class="btn btn-default btn-sm">
+                  <span class = 'p-0'>📖</span>
+                  </button>
+                  <button id = 'fullscreen' type="button" title = 'Ceo ekran' class="btn btn-default btn-sm">
+                  <span class = 'p-0 text-alert'>💠</span>
+                  </button>
+               </div>
+               <div class = 'dobitni_modovi_stil py-2 night-shadow'>
+                  <p id = 'dobitni_mod1' class = 'mt-2 text-danger text-bold text-center text-uppercase'>
+                     9 ALIKE<br>
+                     BONUS<br>
+                     200
+                  </p>
+                  <p id = 'dobitni_mod2' class = 'text-danger text-bold text-center text-uppercase'>
+                     3<br>
+                     WINNING<br>
+                     SLOTS<br>
+                     TOTAL X2
+                  </p>
+                  <p id = 'dobitni_mod3' class = 'text-danger text-bold text-center text-uppercase'>
+                     2<br>
+                     WINNING<br>
+                     SLOTS<br>
+                     TOTAL X1<sup>1</sup>/<sub>2</sub>
+                  </p>
+               </div>
+            </div>
+            <div id = 'bodovna_tabela' class = 'col d-sm-none d-md-block'>
+               <p class = 'text-warning font-weight-bold text-center mb-1'>Points per Winline</p>
+               <img class= 'img-fluid' src = './data/bodovna_tabela.png'>
+            </div>
+            <div id = 'primarni_slot' class = 'col'>
+               <div id = 'primarni_0'><img src = './data/vocke/empty.png'></div>
+               <div id = 'primarni_1'><img src = './data/vocke/empty.png'></div>
+               <div id = 'primarni_2'><img src = './data/vocke/empty.png'></div>
+               <button id = 'ulozi' class = 'btn btn-success text-nowrap' >Stake</button>
+            </div>
+            <div id = 'skala_dobitaka' class = 'col d-sm-none d-md-flex'>
+               <p class = 'text-warning font-weight-bold text-center mb-1'>Points  Prizes</p>
+               <table class = 'text-weight-bold text-align-center night-shadow'>
+                  <tr class = 'text-warning'>
+                     <th></th>
+                     <th></th>
+                  </tr>
+                  <tr>
+                     <td>1000</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>750</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>500</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>400</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>300</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>250</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>200</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>150</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>100</td>
+                     <td></td>
+                  </tr>
+               </table>
+            </div>
+            <div id = 'panel_stanja' class = 'col'>
+               <form name = 'stanje' class = 'form-vertical'>
+                  <label class = 'text-danger shadow-sm text-weight-bold mb-0' >BALANCE</label>
+                  <input name = 'kredit' type = 'number' readonly class = 'bg-danger shadow-bg form-control'>
+                  <label class = 'text-danger shadow-sm text-weight-bold mb-0'>BET</label>
+                  <div class="input-group mb-3">
+                     <div class="input-group-prepend">
+                        <button id = 'smanji_ulog' disabled class="btn btn-success" type="button">-</button>
+                     </div>
+                     <input name = 'ulog' type = 'number' readonly class="bg-danger shadow-bg form-control">
+                     <div class="input-group-append">
+                        <button id = 'povecaj_ulog' class="btn btn-success" type="button">+</button>
+                     </div>
+                  </div>
+                  <div id = 'dobitak_div' class = 'd-none'>
+                     <label class = 'text-primary shadow-sm text-weight-bold mb-0'>TOTAL</label>
+                     <input name = 'dobitak' type = 'number' readonly class = 'bg-primary shadow-bg form-control'>
+                  </div>
+               </form>
+            </div>
+         </div>
+         <div id = 'dobici' class="row text-center m-5">
+            <div id = 'slot0_dobitak' class = 'col-4 invisible'>
+               <div class = 'badge badge-pill badge-primary' >0</div>
+            </div>
+            <div id = 'slot1_dobitak' class = 'col-4 invisible'>
+               <div class = 'badge  badge-pill badge-primary' >0</div>
+            </div>
+            <div id = 'slot2_dobitak' class = 'col-4 invisible'>
+               <div class = 'border-bg badge w-10 badge-pill badge-primary' >0</div>
+            </div>
+         </div>
+         <div id = 'slots_div' class="row">
+            <div id = 'slot0' class = 'col-4 p-0'>
+               <div class = 'col-4'></div>
+               <div class = 'col-4'></div>
+               <div class = 'col-4'></div>
+            </div>
+            <div id = 'slot1' class = 'col-4 p-0'>
+               <div class = 'col-4'></div>
+               <div class = 'col-4'></div>
+               <div class = 'col-4'></div>
+               <img class = 'img-fluid' id = 'game_over' src = './data/game_over.png'>
+            </div>
+            <div id = 'slot2' class = 'col-4 p-0'>
+               <div class = 'col-4'></div>
+               <div class = 'col-4'></div>
+               <div class = 'col-4'></div>
+            </div>
+         </div>
       </div>
-	  
-			<div class="modal-body">
-			<p><strong>Komande na tastaturi :</strong></p>
-			<ul>
-			<li>X – slot&nbsp; 1</li>
-			<li>C – slot&nbsp; 2</li>
-			<li>V – slot&nbsp; 3</li>
-			<li>S – Ulog +</li>
-			<li>A – Ulog -</li>
-			<li>B – zamena vockice simbola za 1 ulog</li>
-			<li>SPACE ili L za početak slot igre ili zamenu vockice simbola besplatno</li>
-			<li>N – manja</li>
-			<li>M – Veća</li>
-			<li>SPACE ili L za kasiranje poena</li>
-			</ul>
-			<h3 class="p1">Video slot voćkice</h3>
-			<p class="p1">Kada su popularne casino slot igre u pitanju, Payslot voćkice je aparat koji je omiljeni među kazino igračima sa Balkana.</p>
-			<p class="p1">Cilj ove slot igre je da osvojite minimum 100 poena kako bi dobili mogućnost za duplanje odnosno igru gde pogađate koja karta odnosno broj je veća manja. To ćete ostvariti tako što birate gde postavljate voćkice i druge simbole, kao što su šljive, jagode, barovi, zvona i ostale, koje vam aparat izbacuje.</p>
-			<p class="p1">Slot voćkice ima 3 kvadrata u kome ređate zadate simbole. Ukoliko osvojite u 2 kvadrata poene, vaš iznos poena se dupla 1.5 put. Ukoliko u sva tri kvadrata osvojite poene, oni se dupliraju dva puta. Poene osvajate ukoliko složite iste voćkice i simbole u svakom kvadratu.</p>
-			<p class="p1">U zavisnosti od visine poena, ali i vašeg uloga, imate mogućnost da osvojene poene kasirate ili možete da okušate vašu sreću i duplirate vaš dobitak, sve do blokade.</p>
-			<h3 class="p1">Slot dupliranje</h3>
-			<p class="p1">Slot dupliaranje dobitaka je veoma jednostavno. Ova slot igra vam izbacuje broj a vaš zadatak je da pogodite da li je sleći broj već ili manji, od prethodnog. brojevi se kreću od 1 do 13.</p>
-			</div>
-			
-		</div>
-	  </div>
-	</div>
-
-
-	<button id = 'logo_modal' hidden type="button" title = 'Uputsvo' data-toggle="modal" data-target=".logo-modal" class="btn btn-default btn-sm"></button>
-	
-	<div class="modal fade logo-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-	  <div class="modal-dialog modal-lg">
-		<button id = 'ucitani_podaci' type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
-		<div class="modal-content">		
-			<div class="modal-body">
-				<h4 class = 'text-center' >Vockice</h4>
-				<img style = 'd-block mx-auto' class = 'img-fluid' src = './data/logo.png'>
-				<div class="progress">
-					<div id = 'progress_bar' class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:40%">
-
-					</div>
-				</div>
-			</div>
-	  </div>
-	  
-	</div>
-	</div>
-	
-    <!-- Latest compiled and minified JavaScript -->
-	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-	<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-
-    <script src="js/app.js"></script>
-</body>
+      <button hidden id = 'vece_manje_modal' type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+      </button>
+      <div id="myModal" class="modal" role="dialog">
+         <div class="modal-dialog modal-full">
+            <!-- Modal content-->
+            <div class="modal-content">
+               <button id = 'zatvori_modal' hidden type="button" class="close" data-dismiss="modal"></button>
+               <div id = 'vece_manje_div' class = 'row'>
+                  <div class = 'col col-2'>
+                     <ul id = 'skala_za_dobitke' class = 'list-unstyled'>
+                        <li>200</li>
+                        <li>100</li>
+                        <li>60</li>
+                        <li>40</li>
+                        <li>30</li>
+                        <li>20</li>
+                        <li>15</li>
+                        <li>10</li>
+                        <li>6</li>
+                        <li>4</li>
+                        <li>3</li>
+                        <li>2</li>
+                        <li>0</li>
+                     </ul>
+                  </div>
+                  <div class = 'col col-8'>
+                     <div class = 'container'>
+                        <div class = 'row col-12 justify-content-center'>
+                           <img src = './data/win.png'>
+                        </div>
+                        <div class = 'row col-12 justify-content-center'><input id = 'dobitak_u_kreditima' readonly type = 'number'></div>
+                        <div id = 'vece_manje_slot' class = 'row col-12 justify-content-center align-items-center'>
+                           <div id = 'manja' class='col4 mr-2'><img class = 'img-fluid' width = '150' height = '350' src = './data/vocke/empty.png'></div>
+                           <div id = 'broj' class='col4' >13</div>
+                           <div id = 'veca' class='col4 ml-2'><img class = 'img-fluid' width = '150' height = '350' src = './data/vocke/empty.png'></div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class = 'col col-2'>
+                     <ul id = 'skala_brojeva' class = 'list-unstyled'>
+                        <li>13</li>
+                        <li>12</li>
+                        <li>11</li>
+                        <li>10</li>
+                        <li>9</li>
+                        <li>8</li>
+                        <li>7</li>
+                        <li>6</li>
+                        <li>5</li>
+                        <li>4</li>
+                        <li>3</li>
+                        <li>2</li>
+                        <li>1</li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+         <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title">Uputsvo za igranje</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span> </button>
+               </div>
+               <div class="modal-body">
+                  <p><strong>Komande na tastaturi :</strong></p>
+                  <ul>
+                     <li>X – slot&nbsp; 1</li>
+                     <li>C – slot&nbsp; 2</li>
+                     <li>V – slot&nbsp; 3</li>
+                     <li>S – Ulog +</li>
+                     <li>A – Ulog -</li>
+                     <li>B – zamena vockice simbola za 1 ulog</li>
+                     <li>SPACE ili L za početak slot igre ili zamenu vockice simbola besplatno</li>
+                     <li>N – manja</li>
+                     <li>M – Veća</li>
+                     <li>SPACE ili L za kasiranje poena</li>
+                  </ul>
+                  <h3 class="p1">Video slot voćkice</h3>
+                  <p class="p1">Kada su popularne casino slot igre u pitanju, Payslot voćkice je aparat koji je omiljeni među kazino igračima sa Balkana.</p>
+                  <p class="p1">Cilj ove slot igre je da osvojite minimum 100 poena kako bi dobili mogućnost za duplanje odnosno igru gde pogađate koja karta odnosno broj je veća manja. To ćete ostvariti tako što birate gde postavljate voćkice i druge simbole, kao što su šljive, jagode, barovi, zvona i ostale, koje vam aparat izbacuje.</p>
+                  <p class="p1">Slot voćkice ima 3 kvadrata u kome ređate zadate simbole. Ukoliko osvojite u 2 kvadrata poene, vaš iznos poena se dupla 1.5 put. Ukoliko u sva tri kvadrata osvojite poene, oni se dupliraju dva puta. Poene osvajate ukoliko složite iste voćkice i simbole u svakom kvadratu.</p>
+                  <p class="p1">U zavisnosti od visine poena, ali i vašeg uloga, imate mogućnost da osvojene poene kasirate ili možete da okušate vašu sreću i duplirate vaš dobitak, sve do blokade.</p>
+                  <h3 class="p1">Slot dupliranje</h3>
+                  <p class="p1">Slot dupliaranje dobitaka je veoma jednostavno. Ova slot igra vam izbacuje broj a vaš zadatak je da pogodite da li je sleći broj već ili manji, od prethodnog. brojevi se kreću od 1 do 13.</p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <button id = 'logo_modal' hidden type="button" title = 'Uputsvo' data-toggle="modal" data-target=".logo-modal" class="btn btn-default btn-sm"></button>
+      <div class="modal fade logo-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="loading screen" aria-hidden="true">
+         <div class="modal-dialog modal-lg">
+            <button id = 'ucitani_podaci' type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-content">
+               <div class="modal-body">
+                  <h4 class = 'text-center' >Vockice</h4>
+                  <img class = 'd-block mx-auto img-fluid' src = './data/logo.png'>
+                  <div class="progress">
+                     <div id = 'progress_bar' class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:40%">
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Latest compiled and minified JavaScript -->
+      <script src="./js/jquery-3.5.1.min.js"></script>
+      <script type="text/javascript" src="./js/bootstrap.bundle.min.js"></script>
+      <script src="js/app.js"></script>
+   </body>
 </html>

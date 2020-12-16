@@ -1,288 +1,309 @@
 /* latin */
+
 @font-face {
-  font-family: 'Heebo';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/heebo/v9/NGSpv5_NC0k9P_v6ZUCbLRAHxK1EiSysdUmm.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+	font-family: 'Heebo';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url(https://fonts.gstatic.com/s/heebo/v9/NGSpv5_NC0k9P_v6ZUCbLRAHxK1EiSysdUmm.woff2) format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-body{
+body {
 	background: url(../data/bg2.png) no-repeat;
-	background-size:cover;
-	
+	background-size: cover;
 	font-family: 'Heebo', sans-serif;
-	
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-}
-#container{
-	
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
 }
 
-.night-shadow{
+#container {}
+
+.night-shadow {
 	background: #2a1550a3;
-    box-shadow: 1px 1px 5px #dfe2fe;
+	box-shadow: 1px 1px 5px #dfe2fe;
 }
 
-.dobitni_modovi_stil{
-	
-    border-radius: 10px;
+.dobitni_modovi_stil {
+	border-radius: 10px;
 }
 
-#dobitni_modovi{	
+#dobitni_modovi {
 	font-size: 0.9em;
-    line-height: 1;
-    font-weight: 600;
-    text-shadow: rebeccapurple 0.1px 0.1px 5px;	
+	line-height: 1;
+	font-weight: 600;
+	text-shadow: rebeccapurple 0.1px 0.1px 5px;
 }
-#primarni_slot{
+
+#primarni_slot {
 	background: url('../data/primarni_slot.png') no-repeat top center;
-	display:flex;
-	flex-direction:column;
-	align-items:center;
-	padding-top:25px;
-}
-#primarni_slot img{
-	height:65px!important;
-}
-#skala_dobitaka{
 	display: flex;
-    flex-direction: column;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 25px;
 }
-#ulozi{
-	position:relative;
-	top:30px;
+
+#primarni_slot img {
+	height: 65px!important;
+}
+
+#skala_dobitaka {
+	display: flex;
+	flex-direction: column;
+}
+
+#ulozi {
+	position: relative;
+	top: 30px;
 	font-size: 0.8em;
 }
 
-#game_over{
-	position:absolute;
-	top:40%;
-	width:auto;
-	display:none;
+#game_over {
+	position: absolute;
+	top: 40%;
+	width: auto;
+	display: none;
 }
-#slot0_dobitak,#slot1_dobitak,#slot2_dobitak{
-	z-index:1;
+
+#slot0_dobitak,
+#slot1_dobitak,
+#slot2_dobitak {
+	z-index: 1;
 }
-#slot0,#slot1,#slot2{
-	display:flex;
+
+#slot0,
+#slot1,
+#slot2 {
+	display: flex;
 }
-#slots_div{
+
+#slots_div {
 	background: url('../data/slots_bg.png') no-repeat top center;
 	background-size: 100% 100%;
 }
-#dobici{
+
+#dobici {
 	margin-bottom: -10px!important;
 }
-#vece_manje_slot{
-	height:70%;	
-	background:no-repeat top center;
+
+#vece_manje_slot {
+	height: 70%;
+	background: no-repeat top center;
 	background-image: url('../data/manja.png');
 }
-#vece_manje_div{
+
+#vece_manje_div {
 	height: 100vh;
-    width: 100vw;	
+	width: 100vw;
 }
 
-#skala_za_dobitke{
-	
-	background:#f8f9fad1;
+#skala_za_dobitke {
+	background: #f8f9fad1;
 	padding: 23%;
-    margin: 20% 10%;
-    font-size: 1.5em;
-    font-weight: bolder;
-    text-align: center;
-    border: black solid thick;
-    outline: orange solid thick;
+	margin: 20% 10%;
+	font-size: 1.5em;
+	font-weight: bolder;
+	text-align: center;
+	border: black solid thick;
+	outline: orange solid thick;
 }
-#skala_brojeva{
-	
-	background:#f8f9fad1;
-	padding: 23%;
-    margin: 20% 10%;
-    font-size: 1.5em;
-    font-weight: bolder;
-    text-align: center;
-    border: black solid thick;
-    outline: orange solid thick;
 
+#skala_brojeva {
+	background: #f8f9fad1;
+	padding: 23%;
+	margin: 20% 10%;
+	font-size: 1.5em;
+	font-weight: bolder;
+	text-align: center;
+	border: black solid thick;
+	outline: orange solid thick;
 }
-#dobitak_u_kreditima{
-	
-    font-size: 3em;
-    margin: 30px;
-    width: 50%;
-    border: black medium solid;
-    outline: orange thick solid;
-	text-align:center;
-	background:#e3f4fc;
+
+#dobitak_u_kreditima {
+	font-size: 3em;
+	margin: 30px;
+	width: 50%;
+	border: black medium solid;
+	outline: orange thick solid;
+	text-align: center;
+	background: #e3f4fc;
 }
-#broj{
+
+#broj {
 	font-size: 10em;
-    margin: 0px 30px 10%;	
+	margin: 0px 30px 10%;
 }
 
-#dobici .badge{
-	width:50px;
-	height:20px;
-	border:orange 3px solid;
-	
+#dobici .badge {
+	width: 50px;
+	height: 20px;
+	border: orange 3px solid;
 }
 
 img {
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-  pointer-events: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+	pointer-events: none;
 }
 
-tbody{
+tbody {
 	/* background: #90d3f045;
 	box-shadow: 1px 1px 5px #495057; */
-	text-align:center;
+	text-align: center;
 	font-size: 0.85em;
 }
-td:nth-child(even){
-	font-weight:bold;
+
+td:nth-child(even) {
+	font-weight: bold;
 	color: #ffc107!important
 }
-td:nth-child(odd){
-	font-weight:bold;
-	color: white;
-}
 
-tr:first-child{
-	text-align:center;	
-}
-
-label{
+td:nth-child(odd) {
 	font-weight: bold;
-    text-shadow: 1px 1px black!important;
-}
-input[name=kredit],input[name=ulog],input[name=dobitak]{
-	border:none;
-	box-shadow:2px 2px 5px  black !important;
 	color: white;
-	font-weight:700;
-	text-align:center;	
 }
 
+tr:first-child {
+	text-align: center;
+}
+
+label {
+	font-weight: bold;
+	text-shadow: 1px 1px black!important;
+}
+
+input[name=kredit],
+input[name=ulog],
+input[name=dobitak] {
+	border: none;
+	box-shadow: 2px 2px 5px black !important;
+	color: white;
+	font-weight: 700;
+	text-align: center;
+}
 
 .modal-full {
-    min-width: 100%;
-    margin: 0;
-	overflow:hidden!important;
+	min-width: 100%;
+	margin: 0;
+	overflow: hidden!important;
 }
 
 .modal-full .modal-content {
-    min-height: 100vh;
+	min-height: 100vh;
 }
 
-#vece_manje_div{
+#vece_manje_div {
 	background: url(../data/bg3.jfif) no-repeat;
-	background-size:cover;
-	background-position:0px 0px;
+	background-size: cover;
+	background-position: 0px 0px;
 }
+
 
 /* Firefox old*/
+
 @-moz-keyframes blink {
-    0% {
-        opacity:1;
-    }
-    50% {
-        opacity:0;
-    }
-    100% {
-        opacity:1;
-    }
-} 
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
 
 @-webkit-keyframes blink {
-    0% {
-        opacity:1;
-    }
-    50% {
-        opacity:0;
-    }
-    100% {
-        opacity:1;
-    }
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
+
+
 /* IE */
+
 @-ms-keyframes blink {
-    0% {
-        opacity:1;
-    }
-    50% {
-        opacity:0;
-    }
-    100% {
-        opacity:1;
-    }
-} 
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+
 /* Opera and prob css3 final iteration */
+
 @keyframes blink {
-    0% {
-        opacity:1;
-    }
-    50% {
-        opacity:0;
-    }
-    100% {
-        opacity:1;
-    }
-} 
-.animacija{
-    -moz-animation: blink normal 1s infinite ease-in-out!important; /* Firefox */
-    -webkit-animation: blink normal 1s infinite ease-in-out!important; /* Webkit */
-    -ms-animation: blink normal 1s infinite ease-in-out!important; /* IE */
-    animation: blink normal 1s infinite ease-in-out!important; /* Opera and prob css3 final iteration */
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.animacija {
+	-moz-animation: blink normal 1s infinite ease-in-out!important;
+	/* Firefox */
+	-webkit-animation: blink normal 1s infinite ease-in-out!important;
+	/* Webkit */
+	-ms-animation: blink normal 1s infinite ease-in-out!important;
+	/* IE */
+	animation: blink normal 1s infinite ease-in-out!important;
+	/* Opera and prob css3 final iteration */
 }
 
 @media (min-width: 0px) {
-	 .img-fluid-my{
-		max-width:8vw;
-		height:auto;
-		
+	.img-fluid-my {
+		max-width: 8vw;
+		height: auto;
 	}
 }
 
 @media (min-width: 576px) {
-	  .img-fluid-my{
-		max-width:8vw;
-		height:auto;
-		
+	.img-fluid-my {
+		max-width: 8vw;
+		height: auto;
 	}
 }
 
-
-@media (min-width: 768px) { 
-	  .img-fluid-my{
-		max-width:8vw;
-		height:auto;
-		
+@media (min-width: 768px) {
+	.img-fluid-my {
+		max-width: 8vw;
+		height: auto;
 	}
 }
-
 
 @media (min-width: 992px) {
-	  .img-fluid-my{
-		max-width:8vw;
-		height:auto;
+	.img-fluid-my {
+		max-width: 8vw;
+		height: auto;
 	}
 }
 
-
 @media (min-width: 1200px) {
-	 .img-fluid-my{
-		max-width:8vw;
-		height:auto;;
+	.img-fluid-my {
+		max-width: 8vw;
+		height: auto;
+		;
 	}
 }
