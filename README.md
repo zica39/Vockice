@@ -1,5 +1,5 @@
 # 🎰Video slot Vockice 
-Kopija poznatog slota 'Vockice' napisan na cistom JS-u
+Kopija poznatog slota 'Voćkice' napisan na cistom JS-u
 <p><strong>Komande na tastaturi :</strong></p>
                   <ul>
                      <li>X – slot&nbsp; 1</li>
