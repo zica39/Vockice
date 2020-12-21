@@ -1,5 +1,5 @@
 # 🎰Video slot 🍒Vockiće🍒 
-Kopija poznatog slota 'Voćkice' napisan na cistom JS-u<br>
+Kopija poznatog slota 'Voćkice' napisana na cistom JS-u<br>
 <img src="https://zica39.github.io/Vockice/data/prikaz.png" width="30%" >
 <img src="https://zica39.github.io/Vockice/data/prikaz1.png" width="30%" >
 <img src="https://zica39.github.io/Vockice/data/prikaz2.png" width="30%" >
