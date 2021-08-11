@@ -13,8 +13,8 @@ Kopija poznatog slota 'Voćkice' napisana na cistom JS-u<br>
                      <li>V – slot&nbsp; 3</li>
                      <li>S – Ulog +</li>
                      <li>A – Ulog -</li>
-                     <li>B – zamena Voćkice simbola za 1 x ulog</li>
-                     <li>SPACE ili L za početak slot igre ili zamenu Voćkice simbola besplatno</li>
+                     <li>B – zamena voćkice simbola za 1 x ulog</li>
+                     <li>SPACE ili L za početak slot igre ili zamenu voćkice simbola besplatno</li>
                      <li>N – manja</li>
                      <li>M – Veća</li>
                      <li>SPACE ili L za kasiranje poena</li>
