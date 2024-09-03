@@ -26,7 +26,7 @@ Kopija poznatog slota 'Voćkice' napisana na cistom JS-u<br>
                   <p class="p1">U zavisnosti od visine poena, ali i vašeg uloga, imate mogućnost da osvojene poene kasirate ili možete da okušate vašu sreću i duplirate vaš dobitak, sve do blokade.</p>
                   <h3 class="p1">Slot dupliranje</h3>
                   <p class="p1">Slot dupliaranje dobitaka je veoma jednostavno. Ova slot igra vam izbacuje broj a vaš zadatak je da pogodite da li je sleći broj već ili manji, od prethodnog. brojevi se kreću od 1 do 13.</p>
-<!--- 
+
 Kao sto duluvra rece:
 > Vockice mi zivot upropastile 😂
--->
+
