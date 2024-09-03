@@ -84,26 +84,39 @@ const ucitani_podaci = document.getElementById('ucitani_podaci');
 
 ucitaj_resurse();
 
-
 function ucitaj_resurse() {
     logo_modal.click();
 
     var max_resursa = zvukovi.length;
     var ucitani_resursi = 0;
 
-    for (var i in zvukovi) {
-        zvukovi[i].oncanplaythrough = function(e) {
-            this.oncanplaythrough = null;
+    zvukovi.forEach((zvuk) => {
+        zvuk.addEventListener('canplaythrough', function() {
+            this.removeEventListener('canplaythrough', arguments.callee);
             ucitani_resursi++;
             progress_bar.style.width = ucitani_resursi / max_resursa * 100 + '%';
             progress_bar.innerHTML = Math.round(ucitani_resursi / max_resursa * 100) + '%';
-			if (ucitani_resursi == max_resursa) {
-                ucitani_podaci.click();
+            if (ucitani_resursi == max_resursa) {
+                // Zatvori modal automatski nakon učitavanja resursa
+                setTimeout(()=>zatvori_modal(), 1000);
                 pocni_igru();
             }
-        }
+        });
+    });
+}
+
+function zatvori_modal() {
+    // Proverite da li modal ima dugme za zatvaranje koje možemo simulirati
+    $('#ucitani_podaci').click();
+    const zatvoriDugme = document.getElementById('zatvori_modal');
+    if (zatvoriDugme) {
+        zatvoriDugme.click();  // Simulacija klika na dugme za zatvaranje modala
+    } else {
+        // Ako nema dugmeta, sakrijemo modal direktno
+        logo_modal.style.display = 'none';
     }
 }
+
 
 function pocni_igru() {
 
@@ -164,7 +177,6 @@ function pocni_igru() {
         povecaj_ulog_dugme.style.display = 'none';
         smanji_ulog_dugme.style.display = 'none';
 
-
     }
 
     document.onkeydown = function(e) {
@@ -191,8 +203,6 @@ function pocni_igru() {
 
         if (key == 'm') veca_div.click();
         if (key == 'n') manja_div.click();
-
-
 
     }
 }
@@ -310,7 +320,6 @@ function isprazni_primarni_slot() {
 }
 
 function daj_nasmumirni_broj(min = 0, max = 10) {
-
     return Math.floor(Math.random() * max + min);
 }
 
@@ -322,7 +331,6 @@ function isprazni_slotove() {
     img.setAttribute('src', prazna_vocka);
     img.setAttribute('draggable', 'false');
 
-
     for (var a in slots) {
         for (var b in slots[a]) {
             for (var i = 0; i < 3; i++) {
@@ -333,7 +341,6 @@ function isprazni_slotove() {
     }
 }
 
-
 function pripremi_slotove() {
     var slots = [slot0_div.children, slot1_div.children, slot2_div.children]
 
@@ -341,7 +348,6 @@ function pripremi_slotove() {
     img.setAttribute('src', prazna_vocka);
     img.setAttribute('draggable', 'false');
     img.classList.add('img-fluid-my');
-
 
     for (var a in slots) {
         for (var b in slots[a]) {
@@ -375,10 +381,7 @@ function popuni_slot(e) {
             izracunaj_poene(this);
             testiraj_pobedu();
         }
-
-
     }
-
 }
 
 function animacija_treptanja() {
@@ -454,7 +457,6 @@ function izracunaj_poene(el) {
 
     var arr = [e0[0].e, e0[1].e, e0[2].e, e1[0].e, e1[1].e, e1[2].e, e2[0].e, e2[1].e, e2[2].e]
     if (arr.every((val, i, a) => val === a[0])) {
-        
         poeni += 300;
         playSound(devet_istih);
     }
@@ -467,8 +469,6 @@ function izracunaj_poene(el) {
 }
 
 function testiraj_pobedu() {
-
-    //animacije
 
     if (slot0_div.br_kolona == 3 && slot1_div.br_kolona == 3 && slot2_div.br_kolona == 3) {
 
@@ -487,9 +487,7 @@ function testiraj_pobedu() {
         dobitak_div.classList.remove('d-none');
         document.forms['stanje']['dobitak'].value = cisti_dobitak;
 
-
         if (dobitak >= 100) {
-            
             playSound(dobitak_zvuk);
 
             var us = uplatna_skala.slice();
@@ -503,7 +501,6 @@ function testiraj_pobedu() {
 
             dobitak_u_kreditima = us[skala_dobitaka_niz.indexOf(closest)];
 
-
             skala_dobitaka_vece_manje.slice().reverse().forEach((e, i) => {
                 skala_za_dobitke.children[i].innerHTML = e * ulog;
             });
@@ -512,8 +509,6 @@ function testiraj_pobedu() {
                 dobitak_u_kreditima_div.value = dobitak_u_kreditima;
                 ugasen_slot();
             }
-
-
         } else if (dobitak < 100 && dobitni_mod > 1) {
             bez_dobitka();
             playSound(dobitak_zvuk);
@@ -553,7 +548,6 @@ function sa_dobitkom() {
 
     ulozi_dugme.innerHTML = 'Stake';
     ulozi_dugme.classList.remove('invisible');
-
 }
 
 function resetuj() {
@@ -608,7 +602,7 @@ function manja() {
     obiljezi_broj(broj);
 
     if (broj < stari_broj) {
-        veci_el = vrati_veci_dobitak();
+        var veci_el = vrati_veci_dobitak();
 
         dobitak_u_kreditima_div.value = Number(veci_el.innerHTML);
         dobitak_u_kreditima = Number(veci_el.innerHTML);
@@ -620,7 +614,6 @@ function manja() {
         playSound(veca_manja);
 
     } else {
-        //prokockao_pobedu;
         dobitak_u_kreditima_div.value = 0;
         zaustavi_animaciju();
         lista_dobitaka.lastElementChild.classList.add('text-danger');
@@ -640,7 +633,7 @@ function veca() {
     obiljezi_broj(broj);
 
     if (broj > stari_broj) {
-        veci_el = vrati_veci_dobitak();
+        var veci_el = vrati_veci_dobitak();
 
         dobitak_u_kreditima_div.value = Number(veci_el.innerHTML);
         dobitak_u_kreditima = Number(veci_el.innerHTML);
@@ -651,7 +644,6 @@ function veca() {
         }
         playSound(veca_manja);
     } else {
-        //prokockao_pobedu
         dobitak_u_kreditima_div.value = 0;
         zaustavi_animaciju();
         lista_dobitaka.lastElementChild.classList.add('text-danger');
@@ -661,15 +653,12 @@ function veca() {
 }
 
 function ugasen_slot() {
-   
     dobitak_u_kreditima_div.click();
     playSound(slot_ugasen);
-
 }
 
 function vrati_veci_dobitak() {
     var val = dobitak_u_kreditima_div.value;
-
 
     for (var i in lista_dobitaka.children)
         if (lista_dobitaka.children[i].innerHTML == val) {
@@ -694,7 +683,7 @@ function isplati_dobitak() {
     if (dobitak_u_kreditima > 0)
         playSound(podignut_novac);
     azuriraj_panel_stanja();
-    zaustavi_animaciju()
+    zaustavi_animaciju();
 
     sa_dobitkom();
     resetuj();
@@ -715,7 +704,6 @@ function pokreni_animaciju() {
             prvi.classList.add('text-danger');
             veci.classList.add('text-danger');
 
-
         } else {
             trenutni.classList.add('text-danger');
         }
@@ -729,14 +717,13 @@ function pokreni_animaciju() {
 }
 
 function zaustavi_animaciju() {
-
     clearInterval(interval);
     lista_dobitaka.querySelectorAll('.text-danger').forEach((e) => e.classList.remove('text-danger'));
 }
 
 function playSound(snd) {
 
-    if (trenutni_zvuk) {
+    if (trenutni_zvuk && !trenutni_zvuk.paused) {
         trenutni_zvuk.currentTime = 0;
         trenutni_zvuk.pause();
 
@@ -780,59 +767,36 @@ dobitak_zvuk.onended = function(e) {
 
     if (dobitak > 100)
         setTimeout(otvori_vece_manje_modal, 1000);
-
-    //else
-    //bez_dobitka();
-    //otvori_vece_manje_modal();
 }
 
 ode_voz.onended = function(e) {
-
     isplati_dobitak();
 };
 
 function iskljuci_zvuk(e) {
     if (!this.iskljuci) {
-        for (var i in zvukovi)
-            zvukovi[i].muted = true;
+        zvukovi.forEach(zvuk => zvuk.muted = true);
         this.innerHTML = '🔇';
     } else {
-        for (var i in zvukovi)
-            zvukovi[i].muted = false;
+        zvukovi.forEach(zvuk => zvuk.muted = false);
         this.innerHTML = '🔊';
     }
     this.iskljuci = !this.iskljuci;
 }
 
 function is_touch_device() {
-    if (window.matchMedia("(pointer: coarse)").matches) {
-        return true;
-    }
-
-    return false;
+    return window.matchMedia("(pointer: coarse)").matches;
 }
 
 function toggleFullScreen() {
 
-    if ((document.fullScreenElement && document.fullScreenElement !== null) ||
-        (!document.mozFullScreen && !document.webkitIsFullScreen)) {
-
-        if (document.documentElement.requestFullScreen) {
-            document.documentElement.requestFullScreen();
-        } else if (document.documentElement.mozRequestFullScreen) {
-            document.documentElement.mozRequestFullScreen();
-        } else if (document.documentElement.webkitRequestFullScreen) {
-            document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+    if (!document.fullscreenElement) {
+        if (document.documentElement.requestFullscreen) {
+            document.documentElement.requestFullscreen();
         }
     } else {
-
-
-        if (document.cancelFullScreen) {
-            document.cancelFullScreen();
-        } else if (document.mozCancelFullScreen) {
-            document.mozCancelFullScreen();
-        } else if (document.webkitCancelFullScreen) {
-            document.webkitCancelFullScreen();
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
         }
     }
 }
@@ -855,3 +819,4 @@ window.addEventListener("load", function() {
     }
 });
 window.addEventListener("orientationchange", hideAddressBar);
+
